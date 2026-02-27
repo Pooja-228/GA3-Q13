@@ -7,21 +7,25 @@ jobs:
   sum-tables:
     runs-on: ubuntu-latest
     steps:
+      # Step 1: Checkout repo
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 20
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: |
-          npm ci || npm install
           npm install playwright
 
+      # Step 4: Install Playwright browsers
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
+      # Step 5: Run your Playwright script
       - name: Run Playwright Table Sum - 22f3001317@ds.study.iitm.ac.in
         run: node sum_tables.js
