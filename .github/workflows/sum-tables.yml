@@ -17,7 +17,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          npm init -y
+          npm ci || npm install
           npm install playwright
 
       - name: Install Playwright Browsers
